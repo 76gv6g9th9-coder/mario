@@ -29,6 +29,8 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
+      - name: Allow artifact metadata to become visible
+        run: sleep 15
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
