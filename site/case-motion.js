@@ -160,7 +160,7 @@
   const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);
   return [...new Set(points.map(y=>Math.round(Math.min(max,y))).concat(max))].sort((a,b)=>a-b);
  }
- function blocked(target){return document.querySelector('dialog[open]')||document.body.classList.contains('demo-open')||document.documentElement.classList.contains('isc-opening-active')||document.documentElement.classList.contains('portal-arriving')||target.closest('input,textarea,select,[contenteditable],.prototype-shell,.image-stage,.case-ruler')}
+ function blocked(target,keyboard=false){return document.querySelector('dialog[open]')||document.body.classList.contains('demo-open')||document.documentElement.classList.contains('isc-opening-active')||document.documentElement.classList.contains('portal-arriving')||target.closest('input,textarea,select,[contenteditable],.prototype-shell,.image-stage'+(keyboard?'':',.case-ruler'))}
  function step(direction){
   const points=stops(),next=direction>0?points.find(y=>y>scrollY+12):points.findLast(y=>y<scrollY-12);
   if(next!==undefined)scrollTo({top:next,behavior:reduced.matches?'instant':'smooth'});
@@ -179,8 +179,16 @@
   total+=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);if(Math.abs(total)<18)return;
   step(Math.sign(total));total=0;lockedUntil=now+(reduced.matches?100:600);
  },{passive:false});
+ let keyboardPage=-1,keyboardUntil=0;
  addEventListener('keydown',e=>{
-  if(blocked(e.target)||e.target.closest('a,button')||e.altKey||e.ctrlKey||e.metaKey)return;
-  if(['PageDown','PageUp',' '].includes(e.key)){e.preventDefault();step(e.key==='PageUp'||e.shiftKey?-1:1)}
+  if(blocked(e.target,true)||e.altKey||e.ctrlKey||e.metaKey)return;
+  const arrow=e.key==='ArrowDown'||e.key==='ArrowUp';
+  if(!arrow&&e.target.closest('a,button'))return;
+  if(arrow){
+   e.preventDefault();if(e.repeat||!numberedPages.length)return;
+   const now=performance.now(),from=now<keyboardUntil?keyboardPage:lastPage;
+   keyboardPage=clamp(from+(e.key==='ArrowDown'?1:-1),0,numberedPages.length-1);keyboardUntil=now+650;
+   numberedPages[keyboardPage].scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'start'});
+  }else if(['PageDown','PageUp',' '].includes(e.key)){e.preventDefault();step(e.key==='PageUp'||e.shiftKey?-1:1)}
  });
 })();
