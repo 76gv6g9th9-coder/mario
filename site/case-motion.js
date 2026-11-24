@@ -10,6 +10,33 @@
  const slider=zoom.querySelector('input'),output=zoom.querySelector('output');
  function headerHeight(){return innerWidth<=760?95:64}
  function sheets(){return [...main.querySelectorAll('.pdf-cover,.pdf-page,.pdf-demo,.gap-demos,.case-panel')]}
+ const ruler=document.querySelector('.case-ruler'),pageCounter=document.createElement('aside');
+ pageCounter.className='case-page-counter';pageCounter.setAttribute('role','status');pageCounter.setAttribute('aria-label','当前页码');document.body.append(pageCounter);
+ let numberedPages=[],pageLinks=[],pageFrame=0,lastPage=-1;
+ const pageNumber=n=>String(n).padStart(2,'0');
+ function updatePageNumber(){
+  pageFrame=0;if(!numberedPages.length)return;
+  const center=headerHeight()+(innerHeight-headerHeight())/2;
+  let index=numberedPages.findIndex(p=>{const r=p.getBoundingClientRect();return r.top<=center&&r.bottom>center});
+  if(index<0){let distance=Infinity;numberedPages.forEach((p,i)=>{const r=p.getBoundingClientRect(),d=Math.min(Math.abs(r.top-center),Math.abs(r.bottom-center));if(d<distance){distance=d;index=i}})}
+  if(index===lastPage)return;lastPage=index;
+  pageCounter.textContent=pageNumber(index+1)+' / '+pageNumber(numberedPages.length);
+  pageCounter.setAttribute('aria-label',english()?`Page ${index+1} of ${numberedPages.length}`:`第 ${index+1} 页，共 ${numberedPages.length} 页`);
+  pageLinks.forEach((link,i)=>{link.classList.toggle('active',i===index);if(i===index)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current')});
+ }
+ function schedulePageNumber(){if(!pageFrame)pageFrame=requestAnimationFrame(updatePageNumber)}
+ function numberPages(){
+  numberedPages=sheets();lastPage=-1;ruler.replaceChildren();
+  pageLinks=numberedPages.map((page,i)=>{
+   if(!page.id)page.id='case-sheet-'+(i+1);
+   const link=document.createElement('a');link.href='#'+page.id;link.textContent=pageNumber(i+1);
+   link.setAttribute('aria-label',english()?`Page ${i+1}`:`第 ${i+1} 页`);
+   link.onclick=e=>{e.preventDefault();page.scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'start'})};
+   ruler.append(link);return link;
+  });
+  updatePageNumber();
+ }
+ addEventListener('scroll',schedulePageNumber,{passive:true});
  function currentSheet(){const h=headerHeight();return sheets().find(p=>p.getBoundingClientRect().bottom>h+40)||sheets().at(-1)}
  function alignPages(){const available=innerHeight-headerHeight();main.querySelectorAll('.pdf-page').forEach(p=>p.style.scrollMarginTop=(headerHeight()+Math.max(0,(available-p.getBoundingClientRect().height)/2))+'px')}
  function setScale(value){
@@ -117,7 +144,7 @@
   main.querySelectorAll('.board-open').forEach(button=>{if(button.parentElement.classList.contains('board-viewport'))return;const wrap=document.createElement('div');wrap.className='board-viewport';button.before(wrap);wrap.append(button)});
   main.querySelectorAll('.pdf-page'+(location.pathname.endsWith('/gap.html')?',.pdf-cover':'')).forEach(page=>{if(seen.has(page))return;seen.add(page);if(reduced.matches||!observer)return;page.dataset.revealEffect=location.pathname.endsWith('/gap.html')?'glass':'brush';page.classList.add('reveal-pending');observer.observe(page)});
   main.querySelectorAll('.pdf-page .board-viewport').forEach(wrap=>{const img=wrap.querySelector('img'),ratio=Number(img.getAttribute('width'))/Number(img.getAttribute('height'));wrap.style.setProperty('--sheet-fit',Math.min(wrap.clientWidth,Math.max(180,innerHeight-headerHeight()-24)*ratio)+'px')});
-  labels();alignPages();scheduleFocus();
+  labels();alignPages();scheduleFocus();numberPages();
  }
  addEventListener('resize',scan);scan();setScale(80);document.documentElement.classList.add('case-motion-ready');new MutationObserver(scan).observe(main,{childList:true});
  reduced.addEventListener('change',()=>{if(reduced.matches){for(const t of active)t.cancel=true;observer?.disconnect();main.querySelectorAll('.reveal-pending').forEach(p=>{const img=p.querySelector('.board-open img');if(img)finish(p,img)})}});
@@ -133,7 +160,7 @@
   const max=Math.max(0,document.documentElement.scrollHeight-innerHeight);
   return [...new Set(points.map(y=>Math.round(Math.min(max,y))).concat(max))].sort((a,b)=>a-b);
  }
- function blocked(target){return document.querySelector('dialog[open]')||document.body.classList.contains('demo-open')||document.documentElement.classList.contains('isc-opening-active')||document.documentElement.classList.contains('portal-arriving')||target.closest('input,textarea,select,[contenteditable],.prototype-shell,.image-stage')}
+ function blocked(target){return document.querySelector('dialog[open]')||document.body.classList.contains('demo-open')||document.documentElement.classList.contains('isc-opening-active')||document.documentElement.classList.contains('portal-arriving')||target.closest('input,textarea,select,[contenteditable],.prototype-shell,.image-stage,.case-ruler')}
  function step(direction){
   const points=stops(),next=direction>0?points.find(y=>y>scrollY+12):points.findLast(y=>y<scrollY-12);
   if(next!==undefined)scrollTo({top:next,behavior:reduced.matches?'instant':'smooth'});
