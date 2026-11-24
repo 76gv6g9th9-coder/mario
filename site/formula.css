@@ -1,0 +1,12 @@
+.formula-page .cover-spread{aspect-ratio:16/9}
+.formula-page .cover-car-anchor{left:14.375%;top:26.6666667%;width:78.125%;height:61.1111111%}
+.formula-page .pdf-demo{width:100%;max-width:2200px;margin:0 auto;padding:0;scroll-margin-top:64px;background:#050606}
+.formula-page #challenges{padding-bottom:0}.formula-page #published{padding-top:0}
+.formula-page .prototype-shell{position:relative;padding:0;background:#050606;border:0}
+.formula-page .prototype-frame{display:block;width:100%;height:auto;min-height:0;aspect-ratio:3106/1440;border:0}
+.formula-page .prototype-top{position:absolute;z-index:5;right:24px;top:24px;padding:0;border:0}
+.formula-page .prototype-top>span{display:none}
+.formula-page .prototype-expand{border-radius:30px;padding:9px 16px!important;font-size:12px!important;color:#eee;background:#0a0c0c88}
+.formula-page .prototype-shell.expanded{position:fixed;inset:0;padding:0;box-shadow:none;overflow:hidden}
+.formula-page .prototype-shell.expanded .prototype-frame{flex:1;height:100%;min-height:0;aspect-ratio:auto}
+@media(max-width:760px){.formula-page .pdf-demo{scroll-margin-top:95px}.formula-page .prototype-top{top:17px;right:20px}.formula-page .prototype-expand{font-size:11px!important}}

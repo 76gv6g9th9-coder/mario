@@ -1,0 +1,12 @@
+{
+  "source": "https://recent.design/i/7blmeso-motion-inspo-008",
+  "source_media_index": 2,
+  "media_url": "https://cdn.recent.design/items/7blmeso/2/720x720.mp4",
+  "source_width": 720,
+  "source_height": 720,
+  "source_duration_seconds": 8,
+  "source_frame_rate": 30,
+  "website_frame_rate": 60,
+  "processing": "Original colors retained; optical-flow interpolation to 60 fps; forward/reverse seamless loop; silent H.264 background.",
+  "website_duration_seconds": 15.9
+}

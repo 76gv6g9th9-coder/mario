@@ -1,0 +1,6 @@
+#click-guide{position:fixed;inset:0;z-index:50;pointer-events:none}#click-guide[hidden]{display:none}
+.guide-target{position:absolute;border:1.5px solid #ffffffdb;border-radius:8px;background:transparent;box-shadow:0 0 6px #ffffff50,inset 0 0 3px #ffffff30;animation:guide-pulse 2.1s ease-in-out infinite}
+.guide-target:after{content:'';position:absolute;inset:-1px;border:1px solid #ffffffe0;border-radius:inherit;filter:blur(2px);opacity:.55}
+@keyframes guide-pulse{0%,100%{opacity:.45;box-shadow:0 0 7px #ffffff50,inset 0 0 3px #ffffff30}50%{opacity:.92;box-shadow:0 0 14px #ffffff90,inset 0 0 5px #ffffff55}}
+@media(max-width:680px){.guide-target{border-radius:5px}}
+@media(prefers-reduced-motion:reduce){.guide-target{animation:none;opacity:.6}}

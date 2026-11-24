@@ -1,0 +1,12 @@
+.case-main{--case-zoom:1}.board-viewport{width:100%;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#8e8e8e55 transparent}.board-viewport>.board-open{width:calc(100% * var(--case-zoom));margin-inline:auto;max-width:none}.case-main.is-zoomed .cover-spread{aspect-ratio:auto}.case-main .cover-spread{min-width:0}
+.case-motion-ready .reveal-pending .board-open>img{opacity:0}.reveal-particles{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.case-zoom,.viewer-zoom{display:flex;align-items:center;gap:9px;white-space:nowrap;font:300 14px/1.4 BlueSkyStandard,MiSans,sans-serif;color:#bbb}.case-zoom{margin-left:14px}.case-zoom input,.viewer-zoom input{width:100px;height:18px;margin:0;accent-color:#d5ef78;cursor:ew-resize}.case-zoom output,.viewer-zoom output{font-variant-numeric:tabular-nums;min-width:37px;text-align:right}.case-zoom:focus-within,.viewer-zoom:focus-within{color:#fff}.case-header .case-return{margin-left:auto}
+@media(max-width:760px){.case-zoom{position:fixed;right:16px;bottom:16px;z-index:45;margin:0;padding:9px 12px;background:#141616ed;border:1px solid #ffffff26;border-radius:24px;backdrop-filter:blur(12px)}.case-zoom input{width:95px}.viewer-zoom{gap:5px}.viewer-zoom input{width:74px}.viewer-zoom .zoom-label{display:none}.image-toolbar>div{gap:8px}.case-page #image-zoom{display:none}}
+@media(prefers-reduced-motion:reduce){.case-motion-ready .reveal-pending .board-open>img{opacity:1}.reveal-particles{display:none}}
+
+.pdf-page .board-viewport>.board-open{width:calc(var(--sheet-fit,100%) * var(--case-zoom))}
+html.case-motion-ready{scroll-padding-top:0}.case-motion-ready .pdf-cover{scroll-margin-top:64px}@media(max-width:760px){.case-motion-ready .pdf-cover{scroll-margin-top:95px}}
+
+.case-main .pdf-cover{display:block;align-content:center;overflow-x:auto}.case-main .pdf-cover .cover-spread{width:calc(min(100%,2200px) * var(--case-zoom));max-width:none;margin-inline:auto}.case-main .pdf-cover .board-viewport>.board-open{width:100%}
+
+.case-motion-ready .reveal-pending[data-reveal-effect="brush"] .board-open>img{opacity:.72;filter:blur(9px)}.case-motion-ready .reveal-running[data-reveal-effect="brush"] .board-open>img{opacity:1;filter:none}@media(prefers-reduced-motion:reduce){.case-motion-ready .reveal-pending[data-reveal-effect="brush"] .board-open>img{opacity:1;filter:none}}

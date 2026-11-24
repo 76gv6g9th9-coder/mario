@@ -1,0 +1,15 @@
+.isc-page .pdf-demo{width:100%;max-width:2200px;margin:0 auto;padding:0;background:#08090b;scroll-margin-top:64px}
+.isc-page [data-pdf-page="20"]{padding-bottom:0}.isc-page [data-pdf-page="21"]{padding-top:0}
+.isc-page .prototype-shell{position:relative;padding:0;border:0;background:#08090b}
+.isc-page .prototype-frame{display:block;width:100%;height:auto;min-height:0;aspect-ratio:2048/864;border:0;background:#08090b}
+.isc-page .prototype-top{position:absolute;z-index:5;left:24px;right:24px;top:24px;padding:0;border:0}
+.isc-page .prototype-top>span{display:none}
+.isc-page .prototype-top{pointer-events:none}.isc-page .prototype-top button{pointer-events:auto}
+.isc-page .prototype-expand{border-radius:30px;padding:9px 16px!important;font-size:12px!important;color:#eee;background:#0a0c0c88}
+.isc-page .prototype-shell.expanded{position:fixed;inset:0;padding:0;box-shadow:none;overflow:hidden}
+.isc-page .prototype-shell.expanded .prototype-frame{flex:1;height:100%;min-height:0;aspect-ratio:auto}
+@media(max-width:760px){.isc-page .pdf-demo{scroll-margin-top:95px}.isc-page .prototype-top{top:17px;right:20px}.isc-page .prototype-expand{font-size:11px!important}}
+
+.isc-page .demo-title{display:block;color:#f4f7ed;font:700 22px/1.5 BlueSkyStandard,MiSans,sans-serif;text-shadow:0 1px 8px #0009}.isc-page .prototype-actions{display:flex;align-items:center;gap:12px}.isc-page .guide-toggle{display:flex;align-items:center;gap:10px;min-height:38px;padding:8px 13px;border:1px solid #ffffff50;border-radius:30px;background:#0a0c0c88;color:#eee;font:400 12px/1.4 BlueSkyStandard,MiSans,sans-serif}.isc-page .guide-toggle i{position:relative;width:27px;height:15px;border-radius:20px;background:#626762;transition:background .2s}.isc-page .guide-toggle i:before{content:'';position:absolute;left:3px;top:3px;width:9px;height:9px;border-radius:50%;background:#eee;transition:transform .2s}.isc-page .guide-toggle[aria-checked=true] i{background:#d5ef78}.isc-page .guide-toggle[aria-checked=true] i:before{transform:translateX(12px);background:#182013}@media(max-width:760px){.isc-page .prototype-top{left:16px;right:16px;align-items:flex-start;gap:10px}.isc-page .demo-title{font-size:15px;max-width:52%}.isc-page .prototype-actions{flex-direction:column;align-items:flex-end;gap:6px}.isc-page .guide-toggle{font-size:11px;min-height:32px;padding:6px 10px}}
+
+.isc-page .cover-spread{aspect-ratio:16/9}

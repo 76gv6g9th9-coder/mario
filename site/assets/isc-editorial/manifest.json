@@ -1,0 +1,77 @@
+{
+  "desktop": {
+    "width": 1458,
+    "height": 980,
+    "page": 8
+  },
+  "pose-driving": {
+    "width": 515,
+    "height": 521,
+    "page": 9
+  },
+  "pose-parked": {
+    "width": 515,
+    "height": 521,
+    "page": 9
+  },
+  "pose-creative": {
+    "width": 498,
+    "height": 521,
+    "page": 9
+  },
+  "parked": {
+    "width": 1283,
+    "height": 780,
+    "page": 13
+  },
+  "list-before": {
+    "width": 460,
+    "height": 399,
+    "page": 14
+  },
+  "list-after": {
+    "width": 554,
+    "height": 399,
+    "page": 14
+  },
+  "driving": {
+    "width": 1380,
+    "height": 845,
+    "page": 15
+  },
+  "settings": {
+    "width": 874,
+    "height": 492,
+    "page": 16
+  },
+  "settings-detail": {
+    "width": 870,
+    "height": 492,
+    "page": 16
+  },
+  "canvas": {
+    "width": 843,
+    "height": 476,
+    "page": 18
+  },
+  "templates": {
+    "width": 846,
+    "height": 476,
+    "page": 18
+  },
+  "ai-start": {
+    "width": 812,
+    "height": 457,
+    "page": 21
+  },
+  "ai-plan": {
+    "width": 812,
+    "height": 457,
+    "page": 21
+  },
+  "ai-edit": {
+    "width": 812,
+    "height": 457,
+    "page": 21
+  }
+}

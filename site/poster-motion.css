@@ -1,0 +1,9 @@
+/* Desktop posters turn toward the reader as they are approached. */
+@media (hover:hover) and (pointer:fine){
+ .home-page .poster-project{--view-x:4deg;--view-y:-34deg}
+ .home-page .poster{transform:perspective(1100px) translateY(var(--lift)) rotateX(calc(var(--view-x) + var(--tilt-x))) rotateY(calc(var(--view-y) + var(--tilt-y))) rotateZ(var(--rotation));transform-origin:50% 65%;transition:transform .8s cubic-bezier(.2,.75,.2,1),box-shadow .6s;backface-visibility:hidden}
+ .home-page .poster-project:hover .poster,.home-page .poster-project:focus-visible .poster{--view-x:0deg;--view-y:0deg}
+}
+@media (prefers-reduced-motion:reduce){
+ .home-page .poster{--view-x:0deg;--view-y:0deg;transition:none}
+}

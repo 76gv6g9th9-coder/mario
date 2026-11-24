@@ -1,0 +1,30 @@
+let caseLang='zh';
+const ct=(zh,en)=>caseLang==='zh'?zh:en;
+const chapters=[["cover",39,"GAP期","GAP"],["updates",null,"持续更新","Updates"]];
+let imageTrigger,progressFrame=0;
+const viewer=document.getElementById('image-viewer');
+const asset=p=>`assets/gap-full/page-${String(p).padStart(2,'0')}.jpg?v=35`;
+function board(page){const chapter=chapters.find(c=>c[1]===page);const title=ct(`PDF 第 ${page} 页`,`PDF page ${page}`);return `<section class="pdf-page" data-pdf-page="${page}" ${chapter?`id="${chapter[0]}"`:''} aria-label="${title}"><button class="board-open" data-page="${page}" aria-label="${ct('放大查看完整页面','Enlarge the complete page')} · ${title}"><img src="${asset(page)}" width="3072" height="1728" alt="${title}${chapter?' · '+ct(chapter[2],chapter[3]):''}" loading="lazy"></button></section>`}
+function demoEntries(){return `<div class="gap-demo-links" id="demos" role="group" aria-label="${ct('交互 Demo','Interactive demos')}"><a class="gap-demo-button" href="isc-demo/index.html?embedded=1" target="_blank" rel="noopener">${ct('灯语交互演示','ISC lighting demo')}</a><a class="gap-demo-button" href="formula-demo/index.html?embedded=1" target="_blank" rel="noopener">${ct('向日葵屏交互演示','Sunflower display demo')}</a></div>`}
+function updatePage(){return `<section class="case-panel gap-update-page" id="updates" aria-label="${ct('持续更新','More updates')}" ><p><span>${ct('来不及啦，','Out of time for now,')}</span><span>${ct('持续更新中...','more updates coming...')}</span></p></section>`}
+function renderCase(){
+ document.documentElement.lang=caseLang==='zh'?'zh-CN':'en';
+ document.querySelectorAll('[data-case-language]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.caseLanguage===caseLang)));
+ document.getElementById('case-return').textContent=ct('← 返回作品案例','← All projects');
+ document.querySelector('.case-ruler').innerHTML=chapters.map(([id,,zh,en],i)=>`<a href="#${id}" aria-label="${String(i+1).padStart(2,'0')} ${ct(zh,en)}" title="${ct(zh,en)}"><span>${String(i+1).padStart(2,'0')}</span><i aria-hidden="true"></i></a>`).join('');
+ document.getElementById('case-main').innerHTML=`<section class="pdf-cover" id="cover" data-pdf-page="39"><h1 class="visually-hidden">GAP期</h1><div class="cover-spread"><button class="board-open cover-open" data-page="39" aria-label="${ct('放大项目封面','Enlarge project cover')}"><img class="cover-board" src="${asset(39)}" width="3072" height="1728" alt="GAP期" fetchpriority="high"></button><div class="cover-car-anchor" aria-hidden="true"></div></div>${demoEntries()}</section>`+
+ updatePage()+
+ `<footer class="case-end"><a href="index.html#work">← ${ct('返回作品案例','All projects')}</a><a href="assets/Mario-Portfolio.pdf" target="_blank" rel="noopener">PDF ↗</a></footer>`;
+ document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>openImage(b));
+ progress();
+}
+function setZoom(zoom){viewer.classList.toggle('zoomed',zoom);const button=document.getElementById('image-zoom');button.setAttribute('aria-pressed',String(zoom));button.textContent=zoom?ct('适应窗口','Fit page'):ct('放大查看','Zoom in')}
+function openImage(button){imageTrigger=button;const source=button.querySelector('img'),large=document.getElementById('image-large');large.src=source.src;large.alt=source.alt;document.getElementById('image-caption').textContent=ct(`第 ${String(button.dataset.page).padStart(2,'0')} 页`,`Page ${String(button.dataset.page).padStart(2,'0')}`);document.getElementById('image-close').setAttribute('aria-label',ct('关闭图像','Close image'));setZoom(false);viewer.showModal();const stage=viewer.querySelector('.image-stage');stage.scrollTop=0;stage.scrollLeft=0}
+function progress(){progressFrame=0;const max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.reading-progress').style.transform=`scaleX(${max>0?Math.min(1,scrollY/max):0})`;let active=chapters[0][0];chapters.forEach(([id])=>{if(document.getElementById(id)?.getBoundingClientRect().top<innerHeight*.4)active=id});if(scrollY+innerHeight>=document.documentElement.scrollHeight-30)active=chapters.at(-1)[0];document.querySelectorAll('.case-ruler a').forEach(a=>{const yes=a.hash==='#'+active;a.classList.toggle('active',yes);if(yes)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')})}
+document.getElementById('image-close').onclick=()=>viewer.close();document.getElementById('image-zoom').onclick=()=>setZoom(!viewer.classList.contains('zoomed'));
+viewer.addEventListener('close',()=>{setZoom(false);imageTrigger?.focus({preventScroll:true})});viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.querySelector('.prototype-shell.expanded'))document.querySelector('.prototype-expand').click()});
+document.querySelectorAll('[data-case-language]').forEach(b=>b.onclick=()=>{if(caseLang===b.dataset.caseLanguage)return;const y=scrollY;caseLang=b.dataset.caseLanguage;renderCase();scrollTo({top:y,behavior:'instant'});progress()});
+addEventListener('scroll',()=>{if(!progressFrame)progressFrame=requestAnimationFrame(progress)},{passive:true});addEventListener('resize',progress);renderCase();
+if(location.hash&&!document.documentElement.classList.contains('portal-arriving')){try{requestAnimationFrame(()=>document.querySelector(location.hash)?.scrollIntoView())}catch{}}
+window.MarioPortal?.arrive(document.querySelector('.cover-spread'),'gap');

@@ -1,0 +1,227 @@
+{
+  "version": "2026-11-13 最新素材版",
+  "assets": [
+    {
+      "file": "assets/images/3D车页面.png",
+      "source": "E:\\作品集\\DEMO\\3D车页面.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 2772042,
+      "sha256": "3d894b95902580edaaf49bcf66dedb531cfaa642e9e660a04b015f5ed79fe5b0",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/images/驻车灯语.png",
+      "source": "E:\\作品集\\DEMO\\驻车灯语_1.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 1099568,
+      "sha256": "6a0a16b2d910d115d375b992645076c5f4952299662c090c5fa1b1ed18577e89",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/images/行车灯语.png",
+      "source": "E:\\作品集\\DEMO\\行车灯语.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 1389835,
+      "sha256": "86fc9c122bed6828ba798b9480ae04cb716d917db4107c1fcb2a4981c2fc0b46",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/images/创意画板.png",
+      "source": "E:\\作品集\\DEMO\\创意画板_1.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 1163571,
+      "sha256": "2d3fc3e76c8603be988173c0acaef1f44f935f040d618e7c3e8218ed5fc69341",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/images/创意画板_2.png",
+      "source": "E:\\作品集\\DEMO\\创意画板_2_1.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 1120584,
+      "sha256": "c510f3cb28b7ff89766cbfa33f9973e4b09006ce3055620d9dc60d03b238632c",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/images/创意组合.png",
+      "source": "E:\\作品集\\DEMO\\创意组合.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 1769634,
+      "sha256": "52ecdcad37eb77286370fe55442c50a425efcc17508d23f335b264a545f449f0",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/images/灯语设置.png",
+      "source": "E:\\作品集\\DEMO\\灯语设置.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 1565046,
+      "sha256": "e3958795833fac6280be25dfc94a15fecb53107fb5a155e6ffb3a9a10ed55465",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/images/灯语设置2.png",
+      "source": "E:\\作品集\\DEMO\\灯语设置2.png",
+      "usage": "界面背景；驻车/行车图片同时提供灯语缩略图",
+      "bytes": 1104616,
+      "sha256": "46b0dd026e6ebfa66462264f5606e67ca0f704d24cce291a1a52178af6e124f1",
+      "size": [
+        2560,
+        1440
+      ]
+    },
+    {
+      "file": "assets/video/board-drive.mp4",
+      "source": "drive-board.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 2044222,
+      "sha256": "d7082ae70c6ec6bd47522115c986c49c7c6c4f8400579d9ceb520c28a17b8649",
+      "durationSeconds": 1.966016,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "由正向视频反向生成"
+    },
+    {
+      "file": "assets/video/drive-board.mp4",
+      "source": "行车灯语-创意画板.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 2455951,
+      "sha256": "aef1a0d569fb2aa70d8728fe3f5dae3829e37b1d8554aaf709b14981672af6de",
+      "durationSeconds": 1.972993,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "使用最新版原视频"
+    },
+    {
+      "file": "assets/video/drive-loop.mp4",
+      "source": "驻车灯语-行车灯语.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 1923980,
+      "sha256": "eca0497cd6dd15e3a0cc19acbb91929272e9cce503d4494b1fb8c59066661274",
+      "durationSeconds": 2.7,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "截取稳定行驶段，制作首尾渐变循环"
+    },
+    {
+      "file": "assets/video/drive-park.mp4",
+      "source": "park-drive.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 1632192,
+      "sha256": "d46fea9ef4ea99cfcaf4dbddad08113e12eddbe56f047496330e0407fc267726",
+      "durationSeconds": 1.7,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "由正向视频反向生成"
+    },
+    {
+      "file": "assets/video/home-park.mp4",
+      "source": "3d车-驻车灯语.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 1555178,
+      "sha256": "ea35f100d97e7542007a03fd60b465666579e9d7651a824644f56630ede52bb4",
+      "durationSeconds": 2.0,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "剪去前1.84秒说明黄点片段"
+    },
+    {
+      "file": "assets/video/intro.mp4",
+      "source": "3D车出场动画.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 1002010,
+      "sha256": "9d70cd500b75f97c7f8673fbd857c895211e3a89c2a3bd1e60a08d4667b31548",
+      "durationSeconds": 1.579002,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "使用原视频"
+    },
+    {
+      "file": "assets/video/park-drive.mp4",
+      "source": "驻车灯语-行车灯语.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 2148792,
+      "sha256": "57fbd63060a98b29dd0d867d85a6d74daffad8465d6f5bc75a8ca74d75fbfaa8",
+      "durationSeconds": 1.718005,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "使用本次更新的1.718秒原视频"
+    },
+    {
+      "file": "assets/video/park-home.mp4",
+      "source": "home-park.mp4",
+      "usage": "沿用已接入、去说明黄点或制作循环的视频",
+      "bytes": 1515136,
+      "sha256": "56eddd8855e043707805122d3eabfca063263f01508bd4c24c94f22a2a5814e4",
+      "durationSeconds": 2.0,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "由正向视频反向生成"
+    },
+    {
+      "file": "assets/video/board-edit.mp4",
+      "source": "创意画板-创意画板_2.mp4",
+      "usage": "最新正向转场：创意画板 → 创意画板_2",
+      "bytes": 2406814,
+      "sha256": "0738b08d0783922af13609f1676ca0f6707d48679d05f8212d7220bf458902c4",
+      "durationSeconds": 1.810998,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "使用本次最新版1.81秒原视频"
+    },
+    {
+      "file": "assets/video/edit-board.mp4",
+      "source": "board-edit.mp4",
+      "usage": "返回创意画板，以及返回首页时使用",
+      "bytes": 1188594,
+      "sha256": "b68fe35998ed7d6a7b4a7c5aa51fa105f7dfe07916d8f6f3f824ed65203ad123",
+      "durationSeconds": 1.8,
+      "size": [
+        2560,
+        1440
+      ],
+      "processing": "由本次最新版正向视频反向生成"
+    }
+  ],
+  "assetCount": {
+    "images": 8,
+    "videos": 10
+  }
+}

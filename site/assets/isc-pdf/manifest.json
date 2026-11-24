@@ -1,0 +1,77 @@
+{
+  "cover": {
+    "width": 2560,
+    "height": 1080,
+    "page": 3
+  },
+  "background-car": {
+    "width": 1350,
+    "height": 1050,
+    "page": 4
+  },
+  "survey": {
+    "width": 1060,
+    "height": 659,
+    "page": 5
+  },
+  "constraints": {
+    "width": 1180,
+    "height": 659,
+    "page": 5
+  },
+  "hardware": {
+    "width": 1340,
+    "height": 1030,
+    "page": 6
+  },
+  "status-needs": {
+    "width": 825,
+    "height": 164,
+    "page": 8
+  },
+  "research": {
+    "width": 1508,
+    "height": 710,
+    "page": 10
+  },
+  "matrix": {
+    "width": 1410,
+    "height": 1005,
+    "page": 11
+  },
+  "architecture": {
+    "width": 2384,
+    "height": 688,
+    "page": 12
+  },
+  "parked-scenes": {
+    "width": 825,
+    "height": 160,
+    "page": 13
+  },
+  "card-decision": {
+    "width": 1050,
+    "height": 435,
+    "page": 14
+  },
+  "card-result": {
+    "width": 1294,
+    "height": 763,
+    "page": 14
+  },
+  "creation-entry": {
+    "width": 1526,
+    "height": 857,
+    "page": 17
+  },
+  "ai-overview": {
+    "width": 1556,
+    "height": 1080,
+    "page": 20
+  },
+  "collage": {
+    "width": 2560,
+    "height": 1080,
+    "page": 19
+  }
+}
