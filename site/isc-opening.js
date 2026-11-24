@@ -5,20 +5,22 @@
  const content=[...document.querySelectorAll('.case-header,.case-ruler,#case-main')];
  let done=false,started=false,stallTimer;
  function playLabel(){pause.textContent=video.paused?'继续':'暂停';pause.setAttribute('aria-label',video.paused?'继续播放开场':'暂停开场')}
- function showPlay(){if(done)return;play.hidden=false;play.querySelector('b').textContent=started?'继续播放':'播放开场';playLabel()}
+ function nearEnd(){return Number.isFinite(video.duration)&&video.duration>0&&video.duration-video.currentTime<=.85}
+ function showPlay(){if(done)return;if(video.ended||(started&&nearEnd())){finish(true);return}play.hidden=false;play.querySelector('b').textContent=started?'继续播放':'播放开场';playLabel()}
  async function requestPlay(){
   if(done)return;
   error.hidden=true;
   try{await video.play();if(done){video.pause();return}started=true;play.hidden=true;playLabel()}
   catch{if(!done){layer.classList.add('video-ready');showPlay()}}
  }
- function finish(){
-  if(done)return;done=true;clearTimeout(stallTimer);video.pause();
+ function finish(keepPlaying=false){
+  if(done)return;done=true;clearTimeout(stallTimer);play.hidden=true;error.hidden=true;
+  if(keepPlaying!==true)video.pause();
   content.forEach(el=>el.inert=false);root.classList.remove('isc-opening-active','portal-arriving');
   window.scrollTo({top:0,behavior:'instant'});
   const main=document.getElementById('case-main');main?.setAttribute('tabindex','-1');main?.focus({preventScroll:true});
   layer.setAttribute('aria-hidden','true');layer.classList.add('closing');
-  const hide=()=>{layer.hidden=true};
+  const hide=()=>{layer.hidden=true;video.pause()};
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)hide();else setTimeout(hide,840);
  }
  function start(){
@@ -37,7 +39,7 @@
  video.addEventListener('playing',()=>{if(done)return;started=true;clearTimeout(stallTimer);layer.classList.add('video-ready');play.hidden=true;error.hidden=true;playLabel()});
  video.addEventListener('pause',()=>{if(!done)showPlay()});
  video.addEventListener('ended',finish);
- video.addEventListener('timeupdate',()=>{if(Number.isFinite(video.duration)&&video.duration>0)progress.value=Math.min(1,video.currentTime/video.duration)});
+ video.addEventListener('timeupdate',()=>{if(Number.isFinite(video.duration)&&video.duration>0){progress.value=Math.min(1,video.currentTime/video.duration);if(started&&!video.paused&&nearEnd())finish(true)}});
  video.addEventListener('error',()=>{if(done)return;error.hidden=false;layer.classList.add('video-ready');showPlay()});
  layer.addEventListener('keydown',e=>{
   if(e.key==='Escape'){e.preventDefault();finish();return}
