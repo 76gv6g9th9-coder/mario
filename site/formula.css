@@ -1,4 +1,6 @@
 .formula-page .cover-spread{aspect-ratio:16/9}
+/* Hide the thin white export seam at the source cover's right edge. */
+.formula-page img[src*="formula-full/page-23.jpg"]{clip-path:inset(0 .15% 0 0)}
 .formula-page .cover-car-anchor{left:14.375%;top:26.6666667%;width:78.125%;height:61.1111111%}
 .formula-page .pdf-demo{width:100%;max-width:2200px;margin:0 auto;padding:0;scroll-margin-top:64px;background:#050606}
 .formula-page #challenges{padding-bottom:0}.formula-page #published{padding-top:0}
